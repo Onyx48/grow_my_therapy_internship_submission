@@ -1,0 +1,50 @@
+/* src/app/globals.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom text-shadow utilities */
+.text-shadow-sm {
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.4);
+}
+.text-shadow-md {
+  text-shadow: 0 2px 5px rgb(0 0 0 / 0.4);
+}
+
+/* Custom Keyframes for Infinite Scroll */
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /*
+      This value needs to be half the total width of the duplicated content.
+      Since we duplicated the content 1x (making it 2x total), moving it by 50%
+      of the *total* content width (which is 1x original content width) creates a loop.
+      If you add more cards or change card widths, you might need to adjust this.
+      For now, assuming cards are roughly equal in width.
+    */
+    transform: translateX(
+      -50%
+    ); /* Moves left by 50% of the total duplicated content width */
+  }
+}
+
+/* Apply the animation using Tailwind's arbitrary values or define in tailwind.config.cjs */
+/* For simplicity, we'll define it directly in tailwind.config.cjs in the next step */
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.overflow-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.overflow-hidden {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
